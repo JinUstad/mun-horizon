@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon MUN Debate - Model United Nations Conference</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <style>
+        * {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a0d2e 0%, #2d1b4e 25%, #3d2a5c 50%, #2d1b4e 75%, #1a0d2e 100%);
+            background-attachment: fixed;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .primary-bg {
+            background-color: #bf8bff;
+        }
+        
+        .primary-color {
+            color: #bf8bff;
+        }
+        
+        .btn-primary-custom {
+            background-color: #bf8bff;
+            border-color: #bf8bff;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #a66fe6;
+            border-color: #a66fe6;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .carousel-item img {
+            height: 100vh;
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            width: 90%;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+        
+        /* Founder Section */
+        .founder-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        
+        .founder-image {
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border: 5px solid #bf8bff;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .founder-content {
+            animation: slideInRight 1s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Committee Section */
+        .committee-section {
+            padding: 100px 0;
+            background-color: #111;
+        }
+        
+        .committee-card {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border: 2px solid #bf8bff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        
+        .committee-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(191, 139, 255, 0.3);
+        }
+        
+        .committee-icon {
+            font-size: 3rem;
+            color: #bf8bff;
+            margin-bottom: 20px;
+        }
+        
+        /* Fee Section */
+        .fee-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #bf8bff 0%, #a66fe6 100%);
+            color: white;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background-color: #1a1a1a;
+        }
+        
+        .team-card {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid #333;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: #bf8bff;
+        }
+        
+        .team-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid #bf8bff;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        }
+        
+        .social-icon {
+            font-size: 2rem;
+            color: #bf8bff;
+            margin: 0 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: #a66fe6;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #000;
+            padding: 50px 0 20px;
+            border-top: 2px solid #bf8bff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .founder-image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .committee-card {
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgba(0,0,0,0.9);">
+        <div class="container">
+            <a class="navbar-brand fw-bold primary-color d-flex  align-items-center gap-2" href="#home">
+                <img src="./assets/logo.png" style="width: 30px; height: 30px;" alt=""> Horizon MUN
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#founder">Founder</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#committees">Committees</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#registration">Registration</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Image Slider -->
+    <section id="home" class="hero-section">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/placeholder.svg?height=1080&width=1920" alt="Debate Competition" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="/placeholder.svg?height=1080&width=1920" alt="MUN Conference" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="/placeholder.svg?height=1080&width=1920" alt="Diplomatic Discussion" class="d-block w-100">
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">HORIZON MUN DEBATE</h1>
+            <p class="hero-subtitle">Empowering Future Diplomats Through Model United Nations</p>
+            <p class="lead mb-4">Join us for an extraordinary journey of diplomatic excellence, critical thinking, and global awareness</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOZXdhgDmBOvKCsjeNUj19n7zExEnha5NUYlaQlZrxuVK3KA/viewform" target="_blank" class="btn btn-primary-custom btn-lg me-3">Register Now</a>
+            <a href="#committees" class="btn btn-outline-light btn-lg">View Committees</a>
+        </div>
+    </section>
+
+    <!-- Founder Message Section -->
+    <section id="founder" class="founder-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center mb-5 mb-lg-0">
+                    <img src="./assets/WhatsApp Image 2025-08-15 at 6.12.11 AM (1).jpeg" alt="Founder" class="founder-image">
+                </div>
+                <div class="col-lg-6 founder-content">
+                    <h2 class="display-4 mb-4 primary-color">Founder's Message</h2>
+                    <p class="lead mb-4">
+                        "Welcome to Horizon MUN Debate, where young minds converge to shape the future of diplomacy and international relations."
+                    </p>
+                    <p class="mb-4">
+                        Our mission is to provide a platform for students to develop critical thinking, public speaking, and negotiation skills while gaining deep insights into global affairs. Through rigorous debate and diplomatic simulation, we prepare the next generation of leaders.
+                    </p>
+                    <p class="mb-4">
+                        Join us in this transformative journey where every voice matters, every perspective counts, and every delegate contributes to building a better world through dialogue and understanding.
+                    </p>
+                    <p class="fw-bold primary-color">- Founder,  Mohd Umar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committees and Agenda Section -->
+    <section id="committees" class="committee-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 mb-4 primary-color">Committees & Agenda</h2>
+                <p class="lead">Explore our diverse range of committees addressing critical global issues</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h4 class="primary-color mb-3">UNGA</h4>
+                        <h5>United Nations General Assembly</h5>
+                        <p>Addressing global challenges including climate change, sustainable development, and international cooperation. Delegates will debate resolutions on pressing worldwide issues.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check primary-color me-2"></i>Climate Action & Environmental Policy</li>
+                            <li><i class="fas fa-check primary-color me-2"></i>Global Peace & Security</li>
+                            <li><i class="fas fa-check primary-color me-2"></i>Human Rights & Social Justice</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h4 class="primary-color mb-3">LOK SABHA</h4>
+                        <h5>Indian Parliament Lower House</h5>
+                        <p>Simulating the Indian parliamentary system, focusing on domestic policy, governance, and legislative processes that shape the nation's future.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check primary-color me-2"></i>Economic Policy & Development</li>
+                            <li><i class="fas fa-check primary-color me-2"></i>Education & Healthcare Reform</li>
+                            <li><i class="fas fa-check primary-color me-2"></i>Digital India & Technology</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4 class="primary-color mb-3">AIPPM</h4>
+                        <h5>All India Political Parties Meet</h5>
+                        <p>A unique platform bringing together representatives from various political parties to discuss national issues and find common ground for India's progress.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check primary-color me-2"></i>National Security & Defense</li>
+                            <li><i class="fas fa-check primary-color me-2"></i>Electoral Reforms</li>
+                            <li><i class="fas fa-check primary-color me-2"></i>Federal Structure & Governance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h4 class="primary-color mb-3">HCC</h4>
+                        <h5>Historical Crisis Committee</h5>
+                        <p>Experience pivotal moments in history through dynamic crisis simulation, making decisions that shaped our world and learning from historical perspectives.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check primary-color me-2"></i>World War II Allied Conference</li>
+                            <li><i class="fas fa-check primary-color me-2"></i>Cold War Crisis Management</li>
+                            <li><i class="fas fa-check primary-color me-2"></i>Independence Movement Leaders</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Fee Section -->
+    <section id="registration" class="fee-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 mb-4">Registration Details</h2>
+                <p class="lead">Join the most prestigious MUN conference at an affordable price</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="text-center">
+                                <h3 class="mb-4">Registration Fee</h3>
+                                <div class="display-1 fw-bold mb-3">₹500</div>
+                                <p class="lead">Per Delegate</p>
+                                <ul class="list-unstyled mb-4">
+                                    <li><i class="fas fa-check me-2"></i>Conference Materials</li>
+                                    <li><i class="fas fa-check me-2"></i>Meals & Refreshments</li>
+                                    <li><i class="fas fa-check me-2"></i>Certificate of Participation</li>
+                                    <li><i class="fas fa-check me-2"></i>Networking Opportunities</li>
+                                    <li><i class="fas fa-check me-2"></i>Awards & Recognition</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="text-center">
+                                <h3 class="mb-4">Payment Method</h3>
+                                <div class="qr-code mb-3">
+                                   <div class="card">
+                                    <img src="./assets/qr code.jpeg" alt="">
+                                   </div>
+                                </div>
+                                <p class="mb-3">Scan the QR code above to make payment via PhonePe</p>
+                                <p class="small">After payment, please send screenshot to our WhatsApp for confirmation</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <a href="#contact" class="btn btn-light btn-lg me-3">
+                            <i class="fas fa-user-plus me-2"></i>Register Now
+                        </a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-phone me-2"></i>Contact for Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 mb-4 primary-color">Our Team</h2>
+                <p class="lead">Meet the dedicated individuals behind Horizon MUN Debate</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-card">
+                        <img src="./assets/team-2.jpeg" alt="Team Member 1" class="team-image">
+                        <h4 class="primary-color mb-2">Sauban Shaikh </h4>
+                        <h6 class="text-white mb-3">President</h6>
+                        <p>Experienced MUN delegate with 2+ years in domestic relations. Passionate about fostering diplomatic dialogue among youth.</p>
+                       
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-card">
+                        <img src="./assets/team-1.jpeg" alt="Team Member 2" class="team-image">
+                        <h4 class="primary-color mb-2">Nilesh Thakur </h4>
+                        <h6 class="text-white mb-3">Chief Advisor</h6>
+                        <p>Political science graduate specializing in conflict resolution. Dedicated to creating inclusive and educational MUN experiences.</p>
+                      
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-card">
+                        <img src="./assets/team-3.jpg" alt="Team Member 3" class="team-image">
+                        <h4 class="primary-color  mb-2">Gul Mohamamd</h4>
+                        <h6 class="text-white mb-3">Editor & Social Media Manager</h6>
+                        <p>International affairs enthusiast with expertise in crisis management. Committed to developing future global leaders.</p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 mb-4 primary-color">Contact Us</h2>
+                <p class="lead">Get in touch for registration, queries, or more information</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="text-center">
+                                <div class="mb-4">
+                                    <i class="fas fa-envelope primary-color" style="font-size: 3rem;"></i>
+                                </div>
+                                <h4 class="primary-color mb-3">Email Us</h4>
+                                <p class="lead">md.umar.blooz0094@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="text-center">
+                                <div class="mb-4">
+                                    <i class="fas fa-phone primary-color" style="font-size: 3rem;"></i>
+                                </div>
+                                <h4 class="primary-color mb-3">Call Us</h4>
+                                <p class="lead">+91 870 064 3488</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-5">
+                        <h4 class="primary-color mb-4">Follow Us & Register</h4>
+                        <div class="mb-4">
+                            <a href="https://www.instagram.com/munhorizon/" target="_blank" class="btn btn-primary-custom btn-lg me-3">
+                                <i class="fab fa-instagram me-2"></i>Follow on Instagram
+                            </a>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOZXdhgDmBOvKCsjeNUj19n7zExEnha5NUYlaQlZrxuVK3KA/viewform" target="_blank" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-user-plus me-2"></i>Registration Link
+                            </a>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/munhorizon/" target="_blank" class="social-icon me-3">
+                                <i class="fab fa-instagram"></i>
+                            </a>                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="primary-color mb-3">
+                        <i class="fas fa-globe me-2"></i>Horizon MUN Debate
+                    </h5>
+                    <p>Empowering future diplomats through Model United Nations conferences. Join us in shaping tomorrow's global leaders.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/munhorizon/" target="_blank" class="social-icon me-3">
+                            <i class="fab fa-instagram"></i>
+                        </a>                      
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="primary-color mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="#founder" class="text-light text-decoration-none">Founder</a></li>
+                        <li><a href="#committees" class="text-light text-decoration-none">Committees</a></li>
+                        <li><a href="#team" class="text-light text-decoration-none">Team</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="primary-color mb-3">Committees</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#committees" class="text-light text-decoration-none">UNGA</a></li>
+                        <li><a href="#committees" class="text-light text-decoration-none">Lok Sabha</a></li>
+                        <li><a href="#committees" class="text-light text-decoration-none">AIPPM</a></li>
+                        <li><a href="#committees" class="text-light text-decoration-none">HCC</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <h6 class="primary-color mb-3">Contact Info</h6>
+                    <p><i class="fas fa-envelope me-2 primary-color"></i>info@horizonmun.com</p>
+                    <p><i class="fas fa-phone me-2 primary-color"></i>+91 870 064 3488</p>
+                    <p><i class="fas fa-map-marker-alt me-2 primary-color"></i>Ghaziabad UP, India</p>
+                </div>
+            </div>
+            
+            <hr class="my-4" style="border-color: #bf8bff;">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Horizon MUN Debate. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Designed By <i class="fas fa-heart primary-color"></i> <a class="text-white" href="https://www.dreambooster.in/" target="_blank">DreamBooster</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Smooth Scrolling -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(0,0,0,0.95)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(0,0,0,0.9)';
+            }
+        });
+    </script>
+</body>
+</html>
